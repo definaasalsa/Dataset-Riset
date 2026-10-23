@@ -26,37 +26,6 @@ Level keparahan merupakan skala berurutan, sedangkan fungsi kerugian seperti *cr
 
 ## 5. Research Mind Map
 
-> Diagram di bawah dirender otomatis oleh GitHub (Mermaid).
-
-```mermaid
-mindmap
-  root((Estimasi keparahan karat daun kopi))
-    Latar Belakang
-      Karat daun kopi
-      Dataset RoCoLe
-    Penelitian Terdahulu
-      Parraga-Alava 2019
-      Machado et al
-      Zuñiga Cajas 2025
-      Cao 2020 CORAL
-    Research Gap
-      Keparahan sebagai kelas biasa
-      Kinerja turun di level tinggi
-      Ordinal belum diuji di RoCoLe
-    Metode
-      Level 0 sampai 4
-      ResNet cross entropy
-      ResNet CORAL
-      Validasi silang 5 lipatan
-    Evaluasi
-      Accuracy dan F1
-      MAE level
-      Quadratic weighted kappa
-      Confusion matrix
-    Luaran
-      Proposal
-      Repository GitHub
-```
 
 ## 6. Dataset Riset Kecil
 
