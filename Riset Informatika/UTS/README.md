@@ -8,13 +8,11 @@ Dataset RoCole (Parraga-Alava et al., 2019) menyediakan 1.560 citra daun kopi ro
 Level keparahan merupakan skala berurutan, sedangkan fungsi kerugian seperti *cross-entropy* tidak menangkap informasi urutan antarlabel (Cao et al., 2020). Cao et al. (2020) mengusulkan kerangka CORAL yang dapat memperluas CNN klasifikasi biasa menjadi regresi ordinal. Penelitian ini mengusulkan perbandingan CORAL dengan klasifikasi multikelas biasa pada estimasi keparahan karat di RoCole.
 
 ## 2. Rumusan Masalah
-
 1. Bagaimana kinerja klasifikasi ordinal berbasis CNN (kerangka CORAL) dibandingkan klasifikasi multikelas biasa (*cross-entropy*) dalam mengestimasi tingkat keparahan karat daun kopi pada dataset RoCole
 2. Bagaimana kinerja kedua pendekatan pada tingkat keparahan yang tinggi (level 3 dan 4) yang jumlah citranya sedikit?
 3. Seberapa besar selisih level antara prediksi dan label sebenarnya pada kedua pendekatan?
 
 ## 3. Tujuan dan Batasan
-
 **Tujuan:** (1) membandingkan kinerja CORAL dan *cross-entropy* pada backbone CNN yang sama (2) menganalisis kinerja pada level keparahan tinggi (3) mengukur besar kesalahan prediksi dalam satuan level.
 **Batasa:**
 - Data yang dipakai adalah citra sehat dan karat level 1 sampai 4 (1.393 citra) kelas tungau laba - laba merah dikeluarkan karena bukan bagian dari skala keparahan karat.
@@ -22,13 +20,16 @@ Level keparahan merupakan skala berurutan, sedangkan fungsi kerugian seperti *cr
 - Satu *backbone* CNN dengan dua cara pelatihan, tidak membandingkan banyak arsitektur.
 
 ## 4. Research Gap
-
+| No | Gap | Dasar | Hubungan dengan penelitian ini |
+|---|---|---|---|
+| 1 | Keparahan diperlakukan sebagai kelas biasa dan dinilai dengan accuracy, precision, recall, F1 | Machado et al.; Cao et al. (2020) | Rumusan masalah 1 dan 3 |
+| 2 | Kinerja menurun tajam pada level keparahan tinggi akibat ketimpangan data | Machado et al. | Rumusan masalah 2 |
+| 3 | Metode ordinal diuji pada citra wajah, penerapan pada RoCoLe belum ditemukan (perlu dikonfirmasi) | Cao et al. (2020) | Rumusan masalah 1 |
 
 ## 5. Research Mind Map
 ![Research Mind Map](mind-map.png)
 
 ## 6. Dataset Riset Kecil
-
 | Item | Rencana |
 |---|---|
 | Nama repository | RoCoLe: A robusta coffee leaf images dataset |
@@ -58,7 +59,6 @@ Distribusi kelas pada cakupan ini (dihitung dari jumlah citra yang dilaporkan Pa
 7. **Analisis:** Bandingkan kedua varian, khususnya pada level 3 dan 4, serta pola kesalahan pada *confusion matrix*.
    
 ## 8. Rencana Evaluation Matric
-
 Metrik klasifikasi mengikuti Machado et al. (accuracy, precision, recall, F1) agar dapat dibandingkan, ditambah metrik yang memperhitungkan urutan level karena keparahan adalah skala ordinal.
 
 | Kelompok | Metrik | Definisi singkat | Tujuan |
@@ -75,7 +75,6 @@ Metrik klasifikasi mengikuti Machado et al. (accuracy, precision, recall, F1) ag
 Bobot QWK untuk level i dan j dengan K = 5 level: w(i,j) = (i − j)² / (K − 1)².
 
 ## 9. Referensi
-
 - Cao, W., Mirjalili, V., & Raschka, S. (2020). Rank consistent ordinal regression for neural networks with application to age estimation. *Pattern Recognition Letters, 140*, 325-331. https://doi.org/10.1016/j.patrec.2020.22.008
 - Machado, T.V., Rodrigues, L. G. F., Travecolo, B. A. N., Costa, C. L., Lima, D. A., & Rodrigues Moreira, L. F. Evalution of convolutional neural networks for coffee leaf rust classification. *Workshop WCAMA, Sociedade Brasileira de Computacao*. https://sol.sbc.org.br/index.php/wcama/article/download/36078/35865
 - Parrage-Alava, J., Cusme, K., Loor, A., & Santander, E. (2019). RoCole: A robusta coffee lear images dataset for evaluation of machine learning based methods in plant diseases recognition. *Data in Brief, 25*, 104414. https://doi.org/10.1016/j.dib.2019.104414
