@@ -25,7 +25,7 @@ Level keparahan merupakan skala berurutan, sedangkan fungsi kerugian seperti *cr
 
 
 ## 5. Research Mind Map
-
+![Research Mind Map](mind-map.png)
 
 ## 6. Dataset Riset Kecil
 
