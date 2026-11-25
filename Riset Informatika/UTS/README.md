@@ -200,9 +200,13 @@ MAE dan QWK menjadi metrik utama karena keparahan berskala ordinal. Metrik klasi
 
 Rumus QWK dengan K = 5 level, O = *confusion matrix* teramati, E = matriks harapan dari perkalian distribusi marginal:
 
-```text
-w_{ij} = \frac{(i-j)^2}{(K-1)^2}, \qquad \kappa = 1 - \frac{\sum_{i,j} w_{ij} O_{ij}}{\sum_{i,j} w_{ij} E_{ij}}
-```
+<p align="center">
+<i>w</i><sub><i>ij</i></sub> = (<i>i</i> − <i>j</i>)<sup>2</sup> / (<i>K</i> − 1)<sup>2</sup>
+</p>
+
+<p align="center">
+κ = 1 − ( Σ<sub><i>i,j</i></sub> <i>w</i><sub><i>ij</i></sub> <i>O</i><sub><i>ij</i></sub> ) / ( Σ<sub><i>i,j</i></sub> <i>w</i><sub><i>ij</i></sub> <i>E</i><sub><i>ij</i></sub> )
+</p>
 
 **Kriteria analisis:**
 - **RM 2:** pendekatan ordinal dinilai lebih baik bila menghasilkan MAE lebih rendah dan QWK lebih tinggi tanpa penurunan Macro-F1 yang berarti. Pola kesalahan juga diperiksa pada *confusion matrix*, misalnya apakah kesalahan ordinal lebih banyak jatuh ke level yang bersebelahan.
