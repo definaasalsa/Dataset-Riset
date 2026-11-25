@@ -1,30 +1,37 @@
 ## 1. Rencana Topik
-   Perbandingan CNN Sederhana dan MobileNetV2 pada Klasifikasi Jenis Buah dengan Uji Ketahanan terhadap Gangguan Pencahayaan dan Latar.
+   Pengelolahan citra dan pembelajaran mendalam (Deep learning) untuk pertanian cerdas: estimasi tingkat keparahan penyakit tanaman dengan pendekatan klasifikasi ordinal.
 ## 2. Formulasi Masalah
-- Bagaimana kecenderungan pendekatan dan hasil penelitian klasifikasi jenis buah berdasarkan citra pada dataset Fruits-360?
-- Apa saja celah penelitian (research gap) yang masih terbuka dari penelitian terdahulu?
-- Topik pengembangan apa yang layak diusulkan berdasarkan celah tersebut?
+Penilaian keparahan karat daun kopi Robusta secara visual subjektif. Penelitian berbasis citra yang ada umumnya hanya mengklasifikasi jenis penyakit, atau memperlakukan tingkat keparahan sebagai kelas nominal. 
 ## 3. Riset Gap Penelitian Terdahulu
-Gap 1: Model berat versus model ringan. Shahi et al. (2022) menyatakan bahwa metode DL terbaru untuk klasifikasi buah umumnya berarsitektur berat sehingga membutuhkan penyimpanan besar dan pelatihan mahal, dan karena itu model ringan perlu dieksplorasi tanpa mengorbankan akurasi. Namun Sajid et al. (2025) menemukan bahwa model ringan seperti MobileNetV3-Small dan EfficientNet-Lite mengalami penurunan akurasi pada dataset yang lebih kompleks, sehingga keseimbangan antara akurasi dan efisiensi belum tuntas.
-Gap 2: Data terkontrol versus kondisi dunia nyata. Dataset Fruits-360 dibuat dengan latar putih (Oltean, 2017–), dan Sajid et al. (2025) sendiri mengakui bahwa ketergantungan pada dataset terkontrol mungkin belum menangkap variasi dunia nyata. Mereka merencanakan pengujian dengan variasi pencahayaan dan latar, pipeline deteksi objek, serta penerapan pada perangkat edge.
-Gap 3: Hasil antarstudi sulit dibandingkan langsung (analisis penulis). Tabel perbandingan pada Sajid et al. (2025) memperlihatkan bahwa studi-studi Fruits-360 memakai jumlah kelas dan rasio pembagian data yang berbeda-beda, dan hasil satu arsitektur dapat sangat berbeda antarstudi, misalnya MobileNet-V2 yang mencapai 65% pada Salem et al. (2024). Hal ini menunjukkan perlunya protokol evaluasi yang seragam.
+## Research Gap
+| Gap | Bukti dari penelitian lain | Posisi penelitian ini |
+|---|---|---|
+| Keparahan karat kopi dimodelkan sebagai kelas biasa | Esgario dkk. [13] (cross-entropy nominal), Zuñiga Cajas dkk. [15], Ardah dkk. [16] (RL1-4 sebagai kelas terpisah) | Memakai klasifikasi ordinal (CORAL) |
+| Kinerja pada kopi Robusta masih lemah | Zuñiga Cajas dkk. [15]: F1 sekitar 0,80 pada Caturra turun menjadi sekitar 0,52 pada citra Robusta RoCoLe | Fokus langsung pada Robusta/RoCoLe |
+| Kesalahan terkonsentrasi pada keparahan tinggi | Esgario dkk. [13]: kelas keparahan tinggi dan sangat tinggi paling sering salah diklasifikasi | Menganalisis level 3-4 dan penanganan data timpang |
+| Penelitian citra kopi di Indonesia berhenti di jenis penyakit | Puspita dkk. [19], Mutmainah & Alamin [20] | Menilai tingkat keparahan |
+| Ordinal terbukti di domain lain, belum di karat kopi | Verbesselt dkk. [18] (gulma), Cao dkk. [11] (CORAL, estimasi usia) | Menerapkan CORAL pada karat kopi RoCoLe |
 ## 4. Peluang Pengembangan
-- Menguji model pada foto buah yang diambil sendiri (kamera ponsel, latar dan cahaya beragam) sebagai data uji eksternal.
-- Membandingkan CNN sederhana dan model ringan (misalnya MobileNetV2) dengan protokol pembagian data dan metrik yang seragam.
-- Menambah kelas buah lokal Indonesia. Catatan: sebagian buah tropis seperti salak, rambutan, dan manggis sudah ada dalam daftar kelas Fruits-360, sehingga daftar kelas versi yang dipakai harus diperiksa terlebih dahulu sebelum menentukan buah yang benar-benar belum tercakup.
-- Mengonversi model ke format ringan (misalnya TensorFlow Lite) untuk aplikasi mobile atau web.
-- Memperluas ke klasifikasi tingkat kematangan.
+Menguji model pada citra kebun kopi Indonesia (batasan 3 melarangnya sekarang).
+Mengembangkan alat bantu berbasis HP.
+Membandingkan CORN, regresi, atau loss berbasis jarak.
+Menguji backbone lain.
+Menambah data keparahan tinggi dari sumber lain (batasan 8 melarangnya sekarang).
+Menghitung persen luas daun lewat segmentasi (batasan 6 melarangnya sekarang).
+
 ## 5. Sumber Data dan Referensi
 **a. Nama Repository dataset**
-- Fruits-360
+- RoCoLe: A robusta coffee leaf images dataset
 
 **b. Alamat Github/Kaggle**
-- https://www.kaggle.com/datasets/moltean/fruits
+- https://data.mendeley.com/datasets/c5yvn32dzg/2
 
 **c. Referensi Jurnal**
-1. Mureşan, H., & Oltean, M. (2018). Fruit recognition from images using deep learning. Acta Universitatis Sapientiae, Informatica, 10(1), 26–42. https://doi.org/10.2478/ausi-2018-0002
-2. Oltean, M. (2017–). Fruits-360 dataset [Dataset]. Lisensi CC BY-SA 4.0. https://github.com/fruits-360
-3. Sajid, et al. (2025). Leveraging VGG-19 for automated fruit classification in smart agriculture. PeerJ Computer Science, 11, e3391. https://doi.org/10.7717/peerj-cs.3391 (daftar penulis lengkap perlu dilengkapi dari halaman artikel)
-4. Salem, D. A., Hassan, N. A., & Hamdy, R. M. (2024). Impact of transfer learning compared to convolutional neural networks on fruit detection. Journal of Intelligent & Fuzzy Systems, 46(4), 7791–7803. https://doi.org/10.3233/JIFS-233514
-5. Shahi, T. B., Sitaula, C., Neupane, A., & Guo, W. (2022). Fruit classification using attention-based MobileNetV2 for industrial applications. PLOS ONE, 17(2), e0264586. https://doi.org/10.1371/journal.pone.0264586
-6. Ukwuoma, C. C., Zhiguang, Q., Heyat, M. B. B., Ali, L., Almaspoor, Z., Monday, H. N., & Khan, D. M. (2022). Recent advancements in fruit detection and classification using deep learning techniques. Mathematical Problems in Engineering, 2022, 1–29. https://doi.org/10.1155/2022/9210947
+1. Cao, W., Mirjalili, V., & Raschka, S. (2020). Rank consistent ordinal regression for neural networks with application to age estimation. Pattern Recognition Letters, 140, 325–331. https://doi.org/10.1016/j.patrec.2020.11.008
+2. Esgario, J. G. M., Krohling, R. A., & Ventura, J. A. (2020). Deep learning for classification and severity estimation of coffee leaf biotic stress. Computers and Electronics in Agriculture, 169, 105162. https://doi.org/10.1016/j.compag.2019.105162
+3. Gutiérrez, P. A., Pérez-Ortiz, M., Sánchez-Monedero, J., Fernández-Navarro, F., & Hervás-Martínez, C. (2016). Ordinal regression methods: Survey and experimental study. IEEE Transactions on Knowledge and Data Engineering, 28(1), 127–146. https://doi.org/10.1109/TKDE.2015.2457911
+4. Mutmainah, S., & Alamin, Z. (2026). Detection of coffee leaf diseases using deep learning to support digitalization and smart agriculture. Jurnal Teknik Informatika (Jutif), 7(3), 2517–2533. https://doi.org/10.52436/1.jutif.2026.7.3.5338
+5. Parraga-Alava, J., Cusme, K., Loor, A., & Santander, E. (2019). RoCoLe: A robusta coffee leaf images dataset for evaluation of machine learning based methods in plant diseases recognition. Data in Brief, 25, 104414. https://doi.org/10.1016/j.dib.2019.104414
+6. Puspita, D., Padya, I. R., Efan, & Putrawansyah, F. (2025). Robusta coffee disease classification using optimized MobileNetV3 and DenseNet169. Ingénierie des Systèmes d'Information, 30(11), 2917–2928. https://doi.org/10.18280/isi.301110
+7. Verbesselt, S., Daems, R., Willekens, A., & Van Beek, J. (2025). UAV based weed pressure detection through relative labelling. Remote Sensing, 17(20), 3434. https://doi.org/10.3390/rs17203434
+8. Zuñiga Cajas, J. J., Peña Ramos, O. D., Lasso, E., Avelino, J., Corrales, J. C., & Figueroa Martínez, C. N. (2025). Estimating the severity of coffee leaf rust using deep learning and image processing. Inteligencia Artificial, 28(76), 200–222. https://doi.org/10.4114/intartif.vol28iss76pp200-222
